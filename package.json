@@ -1,0 +1,54 @@
+{
+  "name": "namepicker",
+  "version": "1.0.0",
+  "description": "Name picker",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlbdk/namepicker"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tlbdk/namepicker/issues"
+  },
+  "homepage": "https://github.com/tlbdk/namepicker#readme",
+  "devDependencies": {
+    "@types/node": "^10.3.5",
+    "@types/jest": "^23.3.2",
+    "eslint": "^5.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "prettier": "^1.13.5",
+    "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^2.0.943"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "/src/.+\\.test\\.(ts|js)$",
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "**/*.{ts,js}",
+      "!**/node_modules/**",
+      "!**/types/**",
+      "!**/src/test/**"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node"
+    ]
+  }
+}
