@@ -44,15 +44,14 @@ async function main() {
     .toString()
     .split(';')
 
-  let regex = new RegExp(`^(?:[^;]*;){${headers.indexOf('Russia')}}[-\d]+`)
+  let offset = headers.indexOf('Russia')
 
   let russianNames = allFirstNamesData
     .toString()
     .split('\n')
-    .filter(name => name.match(regex))
-    .map(name => name.replace(/^([^;]+).*$/, '$1'))
+    .map(nameLine => nameLine.split(/;/))
+    .filter(name => (name[offset] || -255) > -3)
   let russianNamesMap = new Map(russianNames.map(name => [name, true]))
-  // Mitja;M;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-2;;;;;;;;;;;;;;;;;;;
 
   let namesAfterRussianFilter = []
   for (let name of namesAfterDanishFilter) {
@@ -62,7 +61,7 @@ async function main() {
   }
   console.log(`Total names after russian filter: ${namesAfterRussianFilter.length}`)
 
-  let badRegex = [/lana$/, /o|s$/]
+  let badRegex = [/^[ZTURF]/, /(?:lana|anna|beta|gunde|sja|ka|dra|mira|slava|veta|lina|rina|tina|tine|mil+a|no|fa|s)$/]
 
   let namesAfterBadFilter = []
   MAIN: for (let name of namesAfterRussianFilter) {
